@@ -1,0 +1,74 @@
+hero: 
+----
+ => represent a generic part 
+ => better to give it a class start with section
+
+ => hero section will contain parent div (hero) and 2 div 
+    - one for box => hero-text-box
+        - heading-primary
+        - hero-description
+
+        - cta button 
+        - learn more button &darr
+
+    - one for image => hero-img-box
+
+
+ => Note:
+    - alt can contain a long text, and don't forget to add alt for seo
+
+---------------
+---------------
+testimonial:
+----------------
+ => full bleed section is a section that will take the full width of the page 
+
+ => figure element: 
+    - we can use it to represent self contain content which some time have a caption 
+    - use it with diagrams, code listing.
+
+ => block quotes: 
+    - it is used to represent some quotes 
+
+ => figure is the perfect container for the images
+
+ => images are inline element by default 
+
+
+// CAll-To-Action section: 
+--------------------------
+ => we create an empty div with this div we give it a background-img and we select the image 
+    but this is not good for the accessibility because it will be empty 
+    - to solve that we will use role="img" and aria-label="// write here the description"
+
+
+------------
+------------
+// footer 
+------------
+ => contact us 
+    - nest all of this in and <address> element 
+    - set the address in normal paragraph 
+    - set the number in <a href="tel:"></a>
+    - set email int href="mailto:"
+
+
+------------
+------------
+// mobile btn: 
+------------
+ => the code should be exist in the html 
+ => to icons ['one to show the menu', 'other one to close the menu]
+ => for the nav that hold our navigation bars dar
+    - make it absolute in the specific and move it to the left translateX(100%)
+
+ => why not only hide the main-nave with display: none :
+    - because then we cannot show the animation 
+    - so we will add a 'state class' to the header 'nav-open
+
+ => how to hide it without display:none;
+    1. hide it visually
+    2. make it unaccessible to mouse and keyboard 
+       pointer-events:none;
+    3. hide it from the screen readers 
+       visibility: hidden

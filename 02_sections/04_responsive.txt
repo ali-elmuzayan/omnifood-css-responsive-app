@@ -1,0 +1,76 @@
+How media queries work (with max-width);
+-----------------------------------------
+ => the explanation here is for desktop-first
+ => @media (max-width: 600px) {}   : is width <= 600, and max-width: 1200
+    - maximum width at which media query still applied
+    - what if we have a screen 400  which one will applied (600, 1200), 
+      the one it less than it will be applied in our case "600"
+
+ => if there is conflict in our style the last one will applied 
+    - lets say we set the background in 2 media, and 
+      they both will be work but the last one will applied
+
+ => code outside of any media query will still applied as it written
+ => you can think at media query as code that override a specific parts
+
+ => important Note: 
+    - 1rem will always be the default size browser setting even if you change it in the html tag as
+      we did in the layout.
+    - 1rem = 1em = 16px, in some browser rem have some bugs when using media query so instead 
+       user 'em' instead 
+
+
+
+How to select BreakPoints: 
+--------------------------
+ => breakpoints: viewport width at which we want our design to change 
+     - the px value we want to put on our media query 
+    
+ => the bad strategy
+    - don't select the breakpoints on the popular devices
+    - because what if there is a new popular devices view will released in the 
+      future
+    - and what about the other devices do we will do for each one at its own 
+
+ => Thg good strategy:
+    - based on screen width ranges 
+
+ => the perfect strategy:
+    - when design breaks down 
+
+
+
+Responding to small laptop:
+---------------------------
+ => first make sure that this meta is exist 
+    - <meat name="viewport" content="width=device-width, initial-scale=1.0";
+    - without this meat tag the responsive web design will not works on mobile 
+      devices and tablets 
+      => because in mobile device it will zoom the page until it fit the screen 
+
+ => it is better to create a new file to the queries "queries.css";
+
+ => put the breakpoint
+    - if you notice the design is about to be break on the 132
+    - we should not use px for our media queries too 
+      => because using px is not adjust for the user's font size setting in the browser
+
+ => our first breakpoint: 84em = 1344px
+    - for the smaller computer 
+
+ => Important notice: 
+    - It is not important to make everything look perfect 
+    - and don't create a lot of breakpoints 
+
+  
+
+Responding to landscape tablets
+------------------------------
+ => you should know that our screen is still look good because we use the fluid layout, 
+    other wise it will not be dynamic like this 
+
+ => if you change the font size in the htm then it change every single font size related to 
+    the rem 
+    - and after change the 'font-size' in the html when you want to size something you will 
+      still size it depending on the first 'font-size' you select.
+ 

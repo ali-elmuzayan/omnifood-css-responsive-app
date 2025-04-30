@@ -1,0 +1,42 @@
+img: 
+-------
+ => If you have a div with img an text  it is better to set the img in a dive and the text in another dive 
+    you can call it for example box-img and box-content 
+
+ => if you will set a card for something and set the dimension the image will be setten on it so it is better that the 
+    images in different cards have the same dimension 
+
+
+
+logo in the header: 
+---------------------
+ => when you have a logo in the header wrap it with a link so whenever the user click on it it will return 
+    hem to the landing page or what ever page 
+
+
+
+Flexbox trick:
+----------------
+ => if you want to push the last element to the bottom 
+    - you can make the dive as a flex-direction: column
+    - and in the element (last child) make it margin-top: auto ;
+
+
+input fonts: 
+------------
+ => input for some reason will not inherit family from the body
+    - so do that manually => font-family: inherit;
+
+
+on focus:
+---------
+ => the border in focus case is not really a border but it is an outline style 
+ => don't set it to none because it will make the accessibility wrong instead style it to 
+    be 
+ => if you try to access it with the global, then you need to do that again with the form it self to 
+    select the focus state fo the form input 
+
+
+icon: 
+-----
+ => with icons you can give it a padding and make it like cycle 

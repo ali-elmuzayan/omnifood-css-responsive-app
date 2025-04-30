@@ -1,0 +1,6 @@
+icons
+ => with icons here we are going to use the "https://ionic.io/ionicons"
+
+ => it is petter to wrap the text next to the icon in a span 
+
+ => when you style the icon you will treat it as it a text, and you can give it height and width

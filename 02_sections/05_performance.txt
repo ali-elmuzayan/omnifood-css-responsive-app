@@ -1,0 +1,33 @@
+in html tag:
+-------
+ => add this property scroll-behavior: smooth;
+    - this property for goggle chrome and it will move smothly 
+      instead of jumping like your in a new page
+    - it is also needed to show the user that your are moving in 
+      the same place 
+ => smooth will not work on safari 
+    - so instead of doing that in CSS 
+    - add it to JavaScript to make it moving smoothly
+
+    const allLinks = document.querySelectorAll('a:link');
+    allLinks.forEach(function(link) {
+        link.addEventLister('click', function(e) {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            // scroll back to top;
+            if (href === '#') window.scrollTo({top:0; behavior:"smooth"})
+
+            // scorll to other links
+            if (href !== '#' && href.startsWith('#')){
+             const sectionEl = document.querySelector(href);
+             sectionEl.scrollIntoView({behavior: "smooth"})
+            }
+
+            if(link.classList.contains('main-nav-link'))
+               headerEl.classList.toggle('nav-open')
+        })
+    })
+
+
+
+lighthouse
