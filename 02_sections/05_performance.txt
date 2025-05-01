@@ -1,33 +1,42 @@
-in html tag:
--------
- => add this property scroll-behavior: smooth;
-    - this property for goggle chrome and it will move smothly 
-      instead of jumping like your in a new page
-    - it is also needed to show the user that your are moving in 
-      the same place 
- => smooth will not work on safari 
-    - so instead of doing that in CSS 
-    - add it to JavaScript to make it moving smoothly
-
-    const allLinks = document.querySelectorAll('a:link');
-    allLinks.forEach(function(link) {
-        link.addEventLister('click', function(e) {
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            // scroll back to top;
-            if (href === '#') window.scrollTo({top:0; behavior:"smooth"})
-
-            // scorll to other links
-            if (href !== '#' && href.startsWith('#')){
-             const sectionEl = document.querySelector(href);
-             sectionEl.scrollIntoView({behavior: "smooth"})
-            }
-
-            if(link.classList.contains('main-nav-link'))
-               headerEl.classList.toggle('nav-open')
-        })
-    })
+test and optimize: 
+-------------------
+ 1. make sure website works well in all major browsers (chrome, firefox, safari, edge, maybe even old IE)
+ 2. test the website on actual mobile devices, not just in DevTools
+ 3. Optimize all images, in terms of dimensions and all file size 
+ 4. fix simple accessibility problems (color contrast issue)
+ 5. run the lighthouse performance test in chromeDevTools and try to fix reported issues
+ 6. think about search engine optimization  
 
 
 
-lighthouse
+Optimize images: 
+-----------------
+ => we need an image tha actually douple a size of the size than is actually displayed on the screen 
+ => explain the process: 
+    1. we start with a really big image if we have it 
+    2. then check the large width that image will have and double it 
+
+ => how to do that: 
+    1. use a program to resize images "for example we have and image of size 1700 resize it to 1200"
+    2. then compress the image "use squoosh" to compress image 
+       - play around with this different options like " reduce pallet
+       - try to use "webP", and increase the quality its a new feature 
+  
+
+ => what is the problem with that : 
+    - safari has partial support with webp images, so in some borwser the image will not shown at all;
+ => how to solve that 
+    - by adding <picture></picture>element and add the 2 images 
+    - what will happen is the browser will discover which of this elements are displayed the best 
+    - <picture> 
+        <source srcset="image/hero.webp" type="image/webp"/>
+        <source srcset="image/hero-min.png" type="image/png"/>
+        <img src="img/her.webp" alt="">
+      </picture>
+    - we still need the image 
+
+
+fixing properties not supported on the browser with safari
+-------------------------------
+ => use prefix like "--webkit-theProperty"
+    - "-moz-"

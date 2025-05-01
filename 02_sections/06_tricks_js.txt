@@ -1,0 +1,81 @@
+------------------
+sticky navigation: 
+------------------
+ => if you want to start to make the header fixed when until you start a specific section and it will not be fixed any more
+ => how to do that 
+    - we will use the modern way by IntersectionObserver()
+    - select the section you want to observer observe('');
+
+ => Implementation 
+    // selection 
+    const sectionHeroEl = document.querySelector(".section-hero");
+
+    // the Implementation
+    const obs = new IntersectionObserver(function(entries){
+        const  ent = entries[0];
+        if (ent.isIntersection === false) 
+         document.querySelector('.header').classList.add('sticky')
+        
+    }, {
+        // in the viewport 
+        root: null;
+        threshold: 0;
+    });
+    obs.observe();
+
+
+
+---------------------
+smoothly scrolling :
+---------------------
+for html tag 
+ => add this property "scroll-behavior: smooth;"
+    - this property for goggle chrome and it will move smothly 
+      instead of jumping like your in a new page
+    - it is also needed to show the user that your are moving in 
+      the same place 
+
+for Js 
+ // smooth will not work on safari 
+    - so instead of doing that in CSS 
+    - add it to JavaScript to make it moving smoothly
+
+    const allLinks = document.querySelectorAll('a:link');
+    allLinks.forEach(function(link) {
+        link.addEventLister('click', function(e) {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            // scroll back to top;
+            if (href === '#') window.scrollTo({top:0; behavior:"smooth"})
+
+            // scorll to other links
+            if (href !== '#' && href.startsWith('#')){
+             const sectionEl = document.querySelector(href);
+             sectionEl.scrollIntoView({behavior: "smooth"})
+            }
+
+            if(link.classList.contains('main-nav-link'))
+               headerEl.classList.toggle('nav-open')
+        })
+    })
+
+
+--------------------------
+add favicon & description: ( for all screens )
+--------------------------
+ => <meta name="description" content="" > 
+    - important for SEO 
+ => <link rel="icons" href="pathOfTheIcon" type="image/png">
+    - this icon should be a small version of the original 
+
+    - you need a favicon for the apple "180"
+
+    - you need 2 for the android "192, 512"
+      => and you need to create a special file 
+         - manifest.webmanifest 
+           {
+            "icons": [
+                {"src": "img/favicon-192.png, "type": "image/png", "sizes": "192x192"},
+                {"src": "img/favicon-512.png, "type": "image/png", "sizes": "512x152"},
+            ]
+           }
