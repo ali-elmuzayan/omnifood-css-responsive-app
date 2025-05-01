@@ -100,6 +100,10 @@
     grid-template-columns: repeat(6, 1fr);
   }
 
+  .cta-section {
+    padding: 2.4rem 0 6.4rem 0;
+  }
+
   .cta {
     grid-template-columns: 3fr 2fr;
   }
@@ -163,5 +167,148 @@
   .main-nav-link:visited {
     font-size: 3rem;
     font: 700;
+  }
+}
+
+/*************************/
+/* below 704px (smaller tables */
+/*************************/
+@media (max-width: 44em) {
+  .grid-3-cols,
+  .grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .diets {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .heading-secondary {
+    margin-bottom: 4.8rem !important;
+  }
+
+  .pricing-plan {
+    width: 100%;
+  }
+
+  .grid-footer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+
+  .links-col {
+    grid-row: 1;
+    grid-column: span 2;
+    margin-bottom: 3.2rem;
+  }
+
+  .delivered-meals {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem !important;
+  }
+
+  .logos {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.4rem;
+  }
+
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-img-box {
+    grid-row: 1;
+    height: 32rem;
+  }
+}
+
+/*************************/
+/* below 704px (smaller tables */
+/*************************/
+@media (max-width: 34em) {
+  .html {
+    font-size: 45%;
+  }
+
+  .heading-primary {
+    font-size: 4rem;
+  }
+
+  .heading-secondary {
+    font-size: 2.8rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2.2rem !important;
+  }
+
+  .heading-description {
+    font-size: 1.8rem;
+  }
+  .grid-2-cols,
+  .grid-3-cols,
+  .grid-4-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .section-hero {
+    padding: 2.4rem 0 6.4rem 0;
+  }
+
+  .hero {
+    padding: 0 3.2rem;
+  }
+
+  .hero-img {
+    width: 80%;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 1.2rem 2.4rem;
+  }
+
+  .logos img {
+    height: 2rem;
+  }
+
+  .step-description {
+    font-size: 1.6rem;
+  }
+
+  .step-img-box:nth-child(2) {
+    grid-row: 1;
+  }
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+
+  .step-img-box {
+    transform: translateY(2.4rem);
+  }
+
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cta .heading-secondary {
+    margin-bottom: 2.2rem !important;
+  }
+
+  .cta-text {
+    font-size: 1.8rem;
+    margin-bottom: 2.4rem;
   }
 }

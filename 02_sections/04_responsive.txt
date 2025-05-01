@@ -74,3 +74,10 @@ Responding to landscape tablets
     - and after change the 'font-size' in the html when you want to size something you will 
       still size it depending on the first 'font-size' you select.
  
+
+
+Responsive to phone: 
+---------------------
+ => it is not a problem to change a lot fo things here what matter is try to write a code that will make you resize 
+    less things as more as possible. 
+ 
