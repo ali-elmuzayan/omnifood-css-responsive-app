@@ -9,8 +9,14 @@
 }
 
 *:focus {
-  outline: none; /*style it as you style border*/
-  box-shadow: 0 0 0 0.8rem #e67d227c;
+  outline: none;
+}
+
+/* Only show the heavy focus ring for keyboard navigation, not on mouse clicks */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.4rem rgba(230, 125, 34, 0.5);
+  border-radius: 0.4rem;
 }
 
 html {

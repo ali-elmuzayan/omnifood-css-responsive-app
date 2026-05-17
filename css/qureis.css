@@ -122,6 +122,18 @@
     z-index: 1001;
   }
 
+  /* push the language switcher next to the menu button */
+  .lang-switcher {
+    margin-inline-start: auto;
+    margin-inline-end: 1.2rem;
+    z-index: 1001;
+  }
+
+  .lang-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+  }
+
   .nav-open .main-nav {
     opacity: 1;
     pointer-events: auto;

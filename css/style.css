@@ -42,13 +42,312 @@ Default 0.9 rem
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 9.6rem;
 }
 
 body {
   line-height: 1;
-  font-family: "Rubik";
+  font-family:
+    "Rubik",
+    "Cairo",
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    sans-serif;
   font-weight: 400;
   color: var(--light-gray);
+  overflow-x: hidden;
+}
+
+/* Use Cairo (with Arabic glyphs) when the page is in Arabic */
+html[lang="ar"] body {
+  font-family: "Cairo", "Rubik", system-ui, sans-serif;
+}
+
+/***********************/
+/* Language switcher   */
+/***********************/
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem;
+  background-color: var(--white);
+  border: 1px solid var(--tint-dark);
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.lang-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--light-gray);
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  line-height: 1;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.lang-btn[data-lang="ar"] {
+  font-family: "Cairo", "Rubik", system-ui, sans-serif;
+  font-size: 1.5rem;
+}
+
+.lang-btn:hover {
+  color: var(--main-color-dark);
+  background-color: var(--tint);
+}
+
+.lang-btn.is-active {
+  background-color: var(--main-color);
+  color: var(--white);
+  box-shadow: 0 2px 6px rgba(230, 125, 34, 0.35);
+}
+
+.lang-btn.is-active:hover {
+  background-color: var(--main-color-dark);
+  color: var(--white);
+}
+
+/* Sticky header: keep switcher readable on white background */
+.sticky .lang-switcher {
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================================
+   Animations & micro-interactions
+   ============================================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(2.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.2rem);
+  }
+}
+
+@keyframes blob {
+  0%,
+  100% {
+    border-radius: 42% 58% 63% 37% / 47% 38% 62% 53%;
+  }
+  50% {
+    border-radius: 58% 42% 38% 62% / 63% 53% 47% 37%;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(230, 125, 34, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 1.6rem rgba(230, 125, 34, 0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+/* Reveal on load for hero copy */
+.hero-text-box > * {
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out forwards;
+}
+.hero-text-box > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.hero-text-box > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.hero-text-box > *:nth-child(3) {
+  animation-delay: 0.35s;
+}
+.hero-text-box > *:nth-child(4) {
+  animation-delay: 0.45s;
+}
+.hero-text-box > .delivered-meals {
+  animation-delay: 0.6s;
+}
+
+/* Hero image: decorative soft blob behind + gentle float */
+.hero-img-box {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-img-box::before {
+  content: "";
+  position: absolute;
+  inset: 6% 6%;
+  background: radial-gradient(
+    closest-side,
+    rgba(230, 125, 34, 0.35),
+    rgba(230, 125, 34, 0) 70%
+  );
+  filter: blur(2rem);
+  z-index: -2;
+  animation: blob 12s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+.hero-img-box::after {
+  content: "";
+  position: absolute;
+  inset: 12% 14%;
+  background-color: var(--tint-dark);
+  border-radius: 42% 58% 63% 37% / 47% 38% 62% 53%;
+  z-index: -1;
+  animation: blob 14s ease-in-out infinite reverse;
+  opacity: 0.7;
+}
+
+.hero-img {
+  animation:
+    fadeIn 0.9s ease-out 0.2s both,
+    floatY 6s ease-in-out 1s infinite;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+  will-change: transform;
+}
+
+.hero-img-box:hover .hero-img {
+  transform: scale(1.04) rotate(-1deg);
+  filter: drop-shadow(0 2.4rem 3.2rem rgba(0, 0, 0, 0.15));
+}
+
+/* Customer avatars: subtle lift on hover */
+.delivered-imgs img {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.delivered-imgs img:hover {
+  transform: translateY(-0.6rem) scale(1.08);
+  z-index: 2;
+  box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.15);
+}
+
+/* Primary CTA: gentle attention pulse */
+.hero-text-box .btn-full {
+  position: relative;
+  animation: pulseGlow 2.6s ease-out 1.5s infinite;
+}
+
+.hero-text-box .btn-full:hover {
+  animation-play-state: paused;
+}
+
+/* Shine sweep on hover for primary buttons */
+.btn-full {
+  position: relative;
+  overflow: hidden;
+}
+.btn-full::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+.btn-full:hover::after {
+  animation: shine 0.9s ease-out;
+}
+
+/* Logo lift */
+.logo {
+  transition: transform 0.35s ease;
+}
+.logo:hover {
+  transform: scale(1.06) rotate(-2deg);
+}
+
+/* Nav links: animated underline */
+.main-nav-link:not(.nav-cta) {
+  position: relative;
+}
+.main-nav-link:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.4rem;
+  width: 100%;
+  height: 2px;
+  background-color: var(--main-color-dark);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.main-nav-link:not(.nav-cta):hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Mobile menu icon: rotate when toggled */
+.icon-mobile-nav {
+  transition: transform 0.35s ease;
+}
+.nav-open .icon-mobile-nav[name="menu-outline"] {
+  transform: rotate(90deg);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /***********************/
@@ -650,7 +949,8 @@ body {
 }
 
 .cta-img-box {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       to right bottom,
       var(--main-color-light),
       var(--main-color)
